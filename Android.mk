@@ -1,5 +1,5 @@
 # TODO:  Find a better way to separate build configs for ADP vs non-ADP devices
-ifneq ($(TARGET_BOARD_AUTO),true)
+ifneq ($(BOARD_IS_AUTOMOTIVE),true)
   ifneq ($(BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE),)
   LOCAL_PATH := $(call my-dir)
 
@@ -17,9 +17,9 @@ ifneq ($(TARGET_BOARD_AUTO),true)
       else ifneq ($(filter msm8996 ,$(TARGET_BOARD_PLATFORM)),)
         #For msm8996 target
         include $(call all-named-subdir-makefiles,msm8996)
-      else ifneq ($(filter msmcobalt ,$(TARGET_BOARD_PLATFORM)),)
-        #For msmcobalt target
-        include $(call all-named-subdir-makefiles,msmcobalt)
+      else ifneq ($(filter msm8998 ,$(TARGET_BOARD_PLATFORM)),)
+        #For msm8998 target
+        include $(call all-named-subdir-makefiles,msm8998)
       else ifeq ($(filter msm8916,$(TARGET_BOARD_PLATFORM)),)
         #For all other targets
         GPS_DIRS=core utils loc_api platform_lib_abstractions etc
